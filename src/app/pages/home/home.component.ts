@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor(private UserService: UserService, private BitcoinService: BitcoinService) { }
-
+  
   loggedinUser!: User
   rate!: number
   ngOnInit(): void {
