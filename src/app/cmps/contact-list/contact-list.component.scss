@@ -1,0 +1,10 @@
+.contact-list {
+    ul {
+        margin-top: 70px;
+        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(249px, 349px));
+        grid-auto-rows: auto;
+        gap: 35px;
+    }
+}

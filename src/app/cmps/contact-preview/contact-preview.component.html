@@ -1,0 +1,21 @@
+<section class="contact-preview" (click)="selectContactId.emit(contact._id)">
+    <div class="card">
+        <div class="img-container">
+            <img src={{contact.imgUrl}} alt="">
+        </div>
+        <div class="info">
+            <h3>{{contact.name}}</h3>
+        </div>
+        <section class="actions">
+            <button class="btn btn-svg-close" (click)="onRemoveContact()">
+                <img src="../../../assets/svg/close-icon.svg" alt="">
+            </button>
+            <button class="btn btn-svg-edit">
+                <img src="../../../assets//svg/edit-icon.svg" alt="">
+            </button>
+        </section>
+        <div class="btn-transfer-container">
+            <button class="btn btn-transfer">Transfer</button>
+        </div>
+    </div>
+</section>

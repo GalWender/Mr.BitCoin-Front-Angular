@@ -1,0 +1,146 @@
+$clr-primary: rgb(51, 162, 51);
+$clr-bg: #f6f7fb;
+$clr-item-bg: #ffff;
+
+$box-shadow-xs: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+$box-shadow-small: 0px 4px 8px rgba(0, 0, 0, 0.15);
+$box-shadow-medium: 0px 6px 20px rgba(0, 0, 0, 0.2);
+$box-shadow-large: 0px 15px 50px rgba(0, 0, 0, 0.3);
+
+$box-shadow-high: 0px 10px 15px rgba(0, 0, 0, 0.1);
+$box-shadow-header: 0px 10px 15px rgba(57, 125, 251, 0.123);
+
+.contact-preview {
+    list-style-type: none;
+    color: black;
+    text-decoration: none;
+
+    button {
+        background-color: transparent;
+        border: none;
+    }
+
+    .actions { 
+        display: flex;
+        padding: 10px;
+        gap: 10px;
+
+        a {
+            width: 20px;
+        }
+    }
+}
+
+.card {
+    margin-top: 50px;
+    margin-bottom: 35px;
+    position: relative;
+    width: 350px;
+    height: 190px;
+    background-color: $clr-item-bg;
+    border-radius: 30px;
+    box-shadow: $box-shadow-small;
+    transition: .5s;
+
+    .btn-transfer-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        list-style-type: none;
+    }
+
+    .btn-transfer {
+        width: fit-content;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 8px;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        list-style-type: none;
+        text-align: center;
+        background-color: $clr-primary;
+        font-size: 16px;
+
+        &:hover {
+            background-color: transparent;
+            outline: 2px solid $clr-primary;
+            color: $clr-primary;
+        }
+    }
+
+    & .info {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 40px;
+    }
+    & .actions {
+        width: 100%;
+        display: flex;
+        align-self: flex-start;
+        justify-content: center;
+        transition: .5s;
+        transform: translateY(200px);
+        opacity: 0;
+    }
+    
+    &:hover .actions {
+        transform: translateY(300px);
+        opacity: 1;
+    }
+
+    & .btn-transfer {
+        display: flex;
+        align-self: flex-start;
+        justify-content: center;
+        transition: .5s;
+        transform: translateY(225px);
+        opacity: 0;
+        
+    }
+
+    &:hover .btn-transfer {
+        transform: translateY(325px);
+        opacity: 1;
+    }
+}
+
+.card:hover {
+    height: 450px;
+
+    .img-container {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+.img-container {
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    translate: -50%;
+    width: 150px;
+    height: 150px;
+    background-color: $clr-item-bg;
+    border-radius: 30px;
+    box-shadow: $box-shadow-large;
+    transition: .5s;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 30px;
+    }
+}

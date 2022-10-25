@@ -1,0 +1,6 @@
+<section class="contact-app">
+    <!-- <ng-template #contactList> -->
+        <app-contact-list (selectContactId)="onSelectContactId($event)" (remove)="onRemoveContact($event)"
+            [contacts]="(contacts$ |async)!"></app-contact-list>
+    <!-- </ng-template> -->
+</section>
