@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { Contact } from '../models/contact.model';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -141,6 +142,8 @@ const CONTACTS = [
     }
 ];
 
+const BASE_URL = 'contact/'
+
 @Injectable({
     providedIn: 'root'
 })
@@ -152,16 +155,23 @@ export class ContactService {
     private _contacts$ = new BehaviorSubject<Contact[]>([])
     public contacts$ = this._contacts$.asObservable()
 
-    constructor() {
+    constructor(private http: HttpClient) {
     }
 
 
     public loadContacts(filterBy: { term: string }): void {
+        // let contacts
         let contacts = this._contactsDb;
         if (filterBy && filterBy.term) {
             contacts = this._filter(contacts, filterBy.term)
         }
         this._contacts$.next(this._sort(contacts))
+        // if (filterBy && filterBy.term) {
+        //     contacts = this.http.get<any>(BASE_URL, {params:filterBy})
+        // }
+        // else {
+        //     contacts = this.http.get<any>(BASE_URL)
+        // }
     }
 
 
@@ -170,7 +180,7 @@ export class ContactService {
         const contact = this._contactsDb.find(contact => contact._id === id)
 
         //return an observable
-        return contact ? of(contact) : throwError(() => `Contact id ${id} not found!`)
+        return contact ? of({ ...contact }) : throwError(() => `Contact id ${id} not found!`)
     }
 
     public deleteContact(id: string) {
@@ -182,22 +192,48 @@ export class ContactService {
     }
 
     public saveContact(contact: Contact) {
+        console.log('contact from service:', contact)
         return contact._id ? this._updateContact(contact) : this._addContact(contact)
     }
 
     private _updateContact(contact: Contact) {
         //mock the server work
-        this._contactsDb = this._contactsDb.map(c => contact._id === c._id ? contact : c)
-        // change the observable data in the service - let all the subscribers know
-        this._contacts$.next(this._sort(this._contactsDb))
+        // console.log('update')
+        // let contacts = this._contactsDb
+        // contacts = contacts.filter(_contact => _contact._id !== contact._id)
+        // // this._contactsDb = this._contactsDb.map(c => contact._id === c._id ? contact : c)
+        // // change the observable data in the service - let all the subscribers know
+        // this._contacts$.next(this._sort(this._contactsDb))
+        // return of(contact)
+        const contacts = this._contactsDb
+        const contactIdx = contacts.findIndex(_contact => _contact._id === contact._id)
+        contacts.splice(contactIdx, 1, contact)
+        this._contacts$.next(contacts)
+        return of(contact)
+    }
+
+    public getEmptyContact(): Contact {
+        return {
+            name: '',
+            email: '',
+            phone: '',
+            imgUrl: ''
+        }
     }
 
     private _addContact(contact: Contact) {
         //mock the server work
-        const newContact = new Contact(contact.name, contact.email, contact.phone);
-        if (typeof newContact.setId === 'function') newContact.setId(getRandomId());
-        this._contactsDb.push(newContact)
-        this._contacts$.next(this._sort(this._contactsDb))
+        // const newContact = new Contact(contact.name, contact.email, contact.phone);
+        // if (typeof newContact.setId === 'function') newContact.setId(getRandomId());
+        // this._contactsDb.push(newContact)
+        // this._contacts$.next(this._sort(this._contactsDb))
+        // return of(contact)
+        console.log('contact', contact)
+        contact._id = getRandomId()
+        contact.imgUrl = `https://xsgames.co/randomusers/assets/avatars/${getRandomInt(0, 1) === 0 ? 'male' : 'female'}/${getRandomInt(0, 78)}.jpg`
+        this._contactsDb.push(contact)
+        this._contacts$.next(this._contactsDb)
+        return of(contact)
     }
 
     private _sort(contacts: Contact[]): Contact[] {
@@ -232,4 +268,10 @@ function getRandomId(length = 8): string {
             characters.length));
     }
     return result;
+}
+
+function getRandomInt(num1: number, num2: number): number {
+    var max = num1 >= num2 ? num1 + 1 : num2 + 1
+    var min = num1 <= num2 ? num1 : num2
+    return Math.floor(Math.random() * (max - min)) + min
 }

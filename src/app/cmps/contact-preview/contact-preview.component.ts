@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Contact } from './../../models/contact.model';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
@@ -8,14 +9,18 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ContactPreviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
   @Input() contact!: Contact
   @Output() remove = new EventEmitter<string>()
-  @Output() selectContactId = new EventEmitter<string>()
   ngOnInit(): void {
   }
 
   onRemoveContact(){
     this.remove.emit(this.contact._id)
+  }
+  onEdit(ev:MouseEvent){
+    ev.stopPropagation()
+    console.log('contact._id:', this.contact._id)
+    this.router.navigate(['/contact/edit', this.contact._id])
   }
 }

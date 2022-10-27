@@ -16,16 +16,17 @@ const routes: Routes = [
     component:ContactAppComponent,
   },
   {
-    path:'contact/detail/:id',
-    component:ContactDetailComponent,
+    path: 'contact/edit',
+    component:ContactEditComponent,
   },
   {
     path: 'contact/edit/:id',
+    // pathMatch:'full',
     component:ContactEditComponent,
   },
   {
-    path: 'contact/edit',
-    component:ContactEditComponent,
+    path:'contact/:id',
+    component:ContactDetailComponent,
   },
   {
     path: 'dashboard',

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { User } from '../models/user.model'
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -26,6 +27,10 @@ export class UserService {
   public getLoggedinUser() {
     const user = this._userDb
     return user
+  }
+
+  public update(user:User) {
+
   }
 }
 

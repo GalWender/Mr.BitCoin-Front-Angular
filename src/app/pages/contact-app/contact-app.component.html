@@ -1,6 +1,7 @@
-<section class="contact-app">
+<section class="contact-app main-layout">
     <!-- <ng-template #contactList> -->
-        <app-contact-list (selectContactId)="onSelectContactId($event)" (remove)="onRemoveContact($event)"
+        <app-contact-list (remove)="onRemoveContact($event)"
             [contacts]="(contacts$ |async)!"></app-contact-list>
     <!-- </ng-template> -->
 </section>
+<router-outlet></router-outlet>

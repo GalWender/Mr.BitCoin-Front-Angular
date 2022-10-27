@@ -1,3 +1,13 @@
-<section class="contact-detail">
-detail
+<section class="contact-detail" *ngIf="contact">
+    <section class="info">
+        <div class="img-container">
+            <img src="{{contact.imgUrl}}" alt="">
+        </div>
+        <p>{{contact.name}}</p>
+        <p>{{contact.email}}</p>
+        <p>{{contact.phone}}</p>
+    </section>
+    <section class="transactions">
+        <!-- <app-transaction-list *ngFor="let transaction of contact." ></app-transaction-list> -->
+    </section>
 </section>

@@ -1,3 +1,4 @@
-<section class="dashboard">
-dashboard
+<section class="dashboard" *ngIf="chartX.length>0 && chartY.length>0">
+    <app-line-chart [chartX]="chartX" [chartY]="chartY"></app-line-chart>
 </section>
+<router-outlet></router-outlet>

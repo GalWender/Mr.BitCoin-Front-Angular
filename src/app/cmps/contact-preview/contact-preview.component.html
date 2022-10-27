@@ -1,4 +1,4 @@
-<section class="contact-preview" (click)="selectContactId.emit(contact._id)">
+<section class="contact-preview" routerLinkActive="active" routerLink="/contact/{{contact._id}}">
     <div class="card">
         <div class="img-container">
             <img src={{contact.imgUrl}} alt="">
@@ -10,7 +10,7 @@
             <button class="btn btn-svg-close" (click)="onRemoveContact()">
                 <img src="../../../assets/svg/close-icon.svg" alt="">
             </button>
-            <button class="btn btn-svg-edit">
+            <button class="btn btn-svg-edit" (click)="onEdit($event)">
                 <img src="../../../assets//svg/edit-icon.svg" alt="">
             </button>
         </section>

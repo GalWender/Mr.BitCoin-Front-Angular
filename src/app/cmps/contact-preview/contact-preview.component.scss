@@ -9,7 +9,6 @@ $box-shadow-large: 0px 15px 50px rgba(0, 0, 0, 0.3);
 
 $box-shadow-high: 0px 10px 15px rgba(0, 0, 0, 0.1);
 $box-shadow-header: 0px 10px 15px rgba(57, 125, 251, 0.123);
-
 .contact-preview {
     list-style-type: none;
     color: black;
@@ -22,11 +21,12 @@ $box-shadow-header: 0px 10px 15px rgba(57, 125, 251, 0.123);
 
     .actions { 
         display: flex;
-        padding: 10px;
         gap: 10px;
 
-        a {
-            width: 20px;
+        button {
+            margin-right: 8px;
+            width: 33px;
+            cursor: pointer;
         }
     }
 }
@@ -39,7 +39,7 @@ $box-shadow-header: 0px 10px 15px rgba(57, 125, 251, 0.123);
     height: 190px;
     background-color: $clr-item-bg;
     border-radius: 30px;
-    box-shadow: $box-shadow-small;
+    box-shadow: $box-shadow-medium;
     transition: .5s;
 
     .btn-transfer-container {

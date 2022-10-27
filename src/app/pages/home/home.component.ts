@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { BitcoinService } from './../../services/bitcoin.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';

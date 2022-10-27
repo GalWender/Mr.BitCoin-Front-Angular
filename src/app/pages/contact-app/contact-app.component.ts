@@ -27,8 +27,4 @@ export class ContactAppComponent implements OnInit {
     this.contactService.deleteContact(contactId)
   }
 
-  onSelectContactId(contactId:string) {
-    this.selectedContactId = contactId
-  }
-
 }

@@ -1,12 +1,6 @@
 <section class="main-app">
   <section class="header">
-    <app-app-header (changeRoute)="changeRoute($event)"></app-app-header>
-  </section>
-  <section class="body">
-    <app-home *ngIf="routeName==='home'"></app-home>
-    <app-contact-app *ngIf="routeName==='contact'"></app-contact-app>
-    <app-dashboard *ngIf="routeName==='dashboard'"></app-dashboard>
-    <app-contact-detail *ngIf="routeName==='detail'"></app-contact-detail>
-    <app-contact-edit *ngIf="routeName==='edit'"></app-contact-edit>
+    <app-app-header></app-app-header>
   </section>
 </section>
+<router-outlet></router-outlet>

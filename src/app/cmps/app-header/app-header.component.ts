@@ -9,8 +9,6 @@ export class AppHeaderComponent implements OnInit {
 
   constructor() { }
 
-  @Output() changeRoute = new EventEmitter<string>()
-
   ngOnInit(): void {
   }
 

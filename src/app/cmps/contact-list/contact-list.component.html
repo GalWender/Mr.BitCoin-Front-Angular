@@ -1,5 +1,6 @@
 <section class="contact-list">
+    <button class="btn btn-add-contact" routerLinkActive="active" routerLink="/contact/edit">Add</button>
     <ul>
-        <app-contact-preview (selectContactId)="selectContactId.emit($event)" (remove)="remove.emit($event)" *ngFor="let contact of contacts" [contact]="contact"></app-contact-preview>
+        <app-contact-preview (remove)="remove.emit($event)" *ngFor="let contact of contacts" [contact]="contact"></app-contact-preview>
     </ul>
 </section>

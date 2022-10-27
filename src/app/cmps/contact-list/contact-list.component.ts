@@ -11,7 +11,6 @@ export class ContactListComponent implements OnInit {
   constructor() { }
 @Input() contacts!: Contact[]
 @Output() remove = new EventEmitter<string>()
-@Output() selectContactId = new EventEmitter<string>()
   
   ngOnInit(): void {
   }

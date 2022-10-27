@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Mr.BitCoin-Front';
-
-  routeName: string = 'home'
-
-  changeRoute(route:string) {
-    this.routeName = route
-  }
 }
