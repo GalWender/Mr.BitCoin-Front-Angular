@@ -10,7 +10,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(private BitcoinService: BitcoinService) { }
 
-  chartData!:[{ x: number, y: number }]
   chartX:Array<string> = []
   chartY:Array<number> = []
   ngOnInit(): void {
@@ -19,5 +18,4 @@ export class DashboardComponent implements OnInit {
       this.chartY.push(data.y)
     }))
   }
-
 }

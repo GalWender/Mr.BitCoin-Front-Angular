@@ -1,4 +1,4 @@
-import { lastValueFrom, Subscription } from 'rxjs';
+import { Subscription, Observable, lastValueFrom } from 'rxjs';
 import { Contact } from './../../models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -12,26 +12,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ContactDetailComponent implements OnInit, OnDestroy {
 
   constructor(
-    private ContactService: ContactService,
+    private contactService: ContactService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
-
+  contact$!: Observable<any>
   contact!: Contact
   paramsSubscription!: Subscription
 
   async ngOnInit() {
-    // this.paramsSubscription = this.route.data.subscribe(data => {
-    //   // console.log(data)
-    //   const contact = data['contact']
-    //   // console.log('contact',contact)
-    //   if(contact) this.contact = contact
-    //   // console.log('contact',contact)
-    // })
-     this.paramsSubscription = this.route.params.subscribe(async params => {
-            const contact = await lastValueFrom(this.ContactService.getContactById(params['id']))
-            if (contact) this.contact = contact
-        })
+    this.paramsSubscription = this.route.params.subscribe(async params => {
+      this.contactService.getContactById(params['id']).subscribe((data: any) => this.contact = data)
+    })
   }
 
   onBack() {
@@ -40,8 +32,6 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe()
-    // if (this.shouldAdoptSubscription) this.shouldAdoptSubscription.unsubscribe()
-    // this.paramsSubscription.unsubscribe()
   }
 
 }

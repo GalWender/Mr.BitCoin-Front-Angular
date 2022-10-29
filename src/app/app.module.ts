@@ -1,3 +1,4 @@
+import { JwtService } from './services/jwt.service';
 import { NgChartsModule } from 'ng2-charts';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,6 +20,7 @@ import { TransactionListComponent } from './cmps/transaction-list/transaction-li
 import { TransactionPreviewComponent } from './cmps/transaction-preview/transaction-preview.component';
 import { FormsModule } from '@angular/forms';
 import { LineChartComponent } from './cmps/line-chart/line-chart.component';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -41,9 +43,9 @@ import { LineChartComponent } from './cmps/line-chart/line-chart.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgChartsModule
+    NgChartsModule,
   ],
-  providers: [],
+  providers: [ApiService,JwtService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

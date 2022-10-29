@@ -14,13 +14,17 @@ export class ContactAppComponent implements OnInit {
 
   contacts!:Contact[]
   contacts$!: Observable<Contact[]>
-  subscription!: Subscription
+  // subscription!: Subscription
   selectedContactId = ''
   filterBy = {term:''}
 
   ngOnInit(): void {
-    this.contactService.loadContacts(this.filterBy)
+    this.contacts = this.contactService.loadContacts(this.filterBy)
+    // .subscrobe(data=>console.log(data))
     this.contacts$ = this.contactService.contacts$
+    // setInterval(()=>{
+    //   console.log('contacts:', this.contacts)
+    // },4000)
   }
 
   onRemoveContact(contactId:string){

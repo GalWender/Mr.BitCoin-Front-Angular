@@ -1,3 +1,4 @@
+import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ContactEditComponent } from './pages/contact-edit/contact-edit.component';
 import { ContactDetailComponent } from './pages/contact-detail/contact-detail.component';
@@ -12,25 +13,29 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path:'contact',
-    component:ContactAppComponent,
+    path: 'contact',
+    component: ContactAppComponent,
   },
   {
     path: 'contact/edit',
-    component:ContactEditComponent,
+    component: ContactEditComponent,
   },
   {
     path: 'contact/edit/:id',
     // pathMatch:'full',
-    component:ContactEditComponent,
+    component: ContactEditComponent,
   },
   {
-    path:'contact/:id',
-    component:ContactDetailComponent,
+    path: 'contact/:id',
+    component: ContactDetailComponent,
   },
   {
     path: 'dashboard',
-    component:DashboardComponent
+    component: DashboardComponent
+  },
+  {
+    path: 'login',
+    component: LoginSignupComponent
   }
 ];
 
